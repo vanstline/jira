@@ -1,0 +1,6 @@
+{
+  "name": "mocks",
+  "scripts": {
+    "mock": "json-server -c json-server.json db.json"
+  }
+}
