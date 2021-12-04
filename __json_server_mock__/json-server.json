@@ -3,6 +3,6 @@
   "watch": true,
   "static": "./public",
   "read-only": false,
-  "no-cors": true,
+  "no-cors": false,
   "no-gzip": true
 }
