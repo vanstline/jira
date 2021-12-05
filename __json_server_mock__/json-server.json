@@ -4,5 +4,6 @@
   "static": "./public",
   "read-only": false,
   "no-cors": false,
-  "no-gzip": true
+  "no-gzip": true,
+  "middlewares": "./middleware.js"
 }
