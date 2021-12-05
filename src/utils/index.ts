@@ -3,12 +3,11 @@ import { useState, useEffect } from "react";
 
 const isFalsy = (val: string | number): boolean => (val === 0 ? false : !val);
 
-export const cleanObject = (object: { [x: string]: any }): boolean => {
+export const cleanObject = (object: { [x: string]: any }): object => {
   const result = { ...object };
   Object.entries(result).forEach(([key, val]) => {
     if (isFalsy(val)) delete result[key];
   });
-  // @ts-ignore
   return result;
 };
 
@@ -37,4 +36,19 @@ export const useDebounce = <T = any>(value: T, delay?: number): T => {
   }, [value, delay]);
 
   return debounceValue;
+};
+
+export const useArray = <T>(initialArray: T[]) => {
+  const [value, setValue] = useState(initialArray);
+  return {
+    value,
+    setValue,
+    add: (item: T) => setValue([...value, item]),
+    clear: () => setValue([]),
+    removeIndex: (i: number) => {
+      const newValue = [...value];
+      newValue.splice(i, 1);
+      setValue(newValue);
+    },
+  };
 };
